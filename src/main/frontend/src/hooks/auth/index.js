@@ -10,15 +10,17 @@ export const UserProvider = ({ children }) => {
     const [cookies, setCookies, removeCookie] = useCookies();
 
     const login = async ({ email, password }) => {
+        setCookies('email', email);
         const res = await axios.post('/api/v1/auth/authenticate', {
             email: email,
             password: password
         });
-        setCookies('token', res.data.token); // your token
+        setCookies('token', res.data.token);
 
         navigate('/home');
     };
 
+    // In SPAs logging out is handled on client side. You just delete your token
     const logout = () => {
         ['token', 'name'].forEach(obj => removeCookie(obj)); // remove data save in cookies
         navigate('/login');

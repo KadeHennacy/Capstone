@@ -4,17 +4,25 @@ import { ProtectRoutes } from './hooks/protectedRoutes';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
+import Header from './components/Header';
+import { useCookies } from 'react-cookie';
 
 export default function App() {
-  return (
-    <Routes>
-      <Route path='/' element={ <Navigate to='home' exact /> } />
-      <Route path='/login' element={ <Login /> } />
+  const [cookies] = useCookies(['token']);
 
-      <Route element={ <ProtectRoutes /> }>
-        <Route path='/home' element={ <Home /> } />
-      </Route>
-      <Route path='*' element={<NotFound />}/>
-    </Routes>
+  return (
+    // todo get the email in this class and pass to header as prop, and convert to typescript
+    <>
+      {cookies.token ? <Header/> : <></>}
+      <Routes>
+        <Route path='/' element={ <Navigate to='home' exact /> } />
+        <Route path='/login' element={ <Login /> } />
+
+        <Route element={ <ProtectRoutes /> }>
+          <Route path='/home' element={ <Home /> } />
+        </Route>
+        <Route path='*' element={<NotFound />}/>
+      </Routes>
+    </>
   )
 }
