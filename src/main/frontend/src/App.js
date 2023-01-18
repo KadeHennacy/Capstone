@@ -1,14 +1,20 @@
-import Register from './components/Register';
-import { Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { ProtectRoutes } from './hooks/protectedRoutes';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 
-
-function App() {
+export default function App() {
   return (
-    <main className="app">
-      <Register/>
-    </main>
-  );
-}
+    <Routes>
+      <Route path='/' element={ <Navigate to='home' exact /> } />
+      <Route path='/login' element={ <Login /> } />
 
-export default App;
+      <Route element={ <ProtectRoutes /> }>
+        <Route path='/home' element={ <Home /> } />
+      </Route>
+      <Route path='*' element={<NotFound />}/>
+    </Routes>
+  )
+}

@@ -1,4 +1,4 @@
-package com.kade.mcps.security;
+package com.kade.mcps.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class JwtFilter extends OncePerRequestFilter {
 
     private final String TOKEN_PREFIX = "Bearer";
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtUtil;
     private final UserDetailsService userDetailsService;
 
 

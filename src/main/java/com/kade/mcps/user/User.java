@@ -1,9 +1,6 @@
 package com.kade.mcps.user;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,18 +10,11 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
-// This class is a model class mapped to the user_table table of the postgres database springsecurity
-
-// Lombok auto generation stuff
-@Component
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
-@EqualsAndHashCode
-// Entity defines that the class is mapped to a table
+@AllArgsConstructor
 @Entity
-// This defines the name of the table. Since the class is table and the actual table is user_table this is neccesary
-// Later I should try commenting out table and column name and see if it makes its own table automatically.
 @Table(name = "user_table")
 public class User implements UserDetails {
     @Id
@@ -48,14 +38,6 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private boolean active;
-    public User(String username, String firstName, String lastName, String password, UserRole userRole, boolean active) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.userRole = userRole;
-        this.active = active;
-    }
 
     //    User details implementation. https://www.codejava.net/frameworks/spring-boot/spring-boot-security-authentication-with-jpa-hibernate-and-mysql implements in a separate class but it can just be accomplished in the
 
