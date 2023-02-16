@@ -1,8 +1,8 @@
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
-import MCPSLogo from "../../assets/logo.svg";
-import DarkMCPSLogo from "../../assets/darkLogo.svg";
+import logo from "../../assets/logo.svg";
+import darkLogo from "../../assets/darkLogo.svg";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -46,7 +46,7 @@ const Topbar = () => {
         sx={{ width: "50%", objectFit: "contain" }}
       >
         <StyledImg
-          src={theme.palette.mode === "dark" ? MCPSLogo : DarkMCPSLogo}
+          src={theme.palette.mode === "dark" ? logo : darkLogo}
           alt="logo"
         />
       </Box>

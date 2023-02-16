@@ -9,7 +9,7 @@ import Topbar from "./scenes/navigation/Topbar";
 import Sidebar from "./scenes/navigation/Sidebar";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
-import img from "./assets/loginBackground.jpg";
+import img from "./assets/loginBackground.png";
 import { useSelector } from "react-redux";
 
 export default function App() {
@@ -28,7 +28,8 @@ export default function App() {
           className="app"
           style={{
             backgroundImage: backgroundImage,
-            backgroundSize: "cover",
+            backgroundSize: "900px 200px",
+            backgroundRepeat: "repeat",
             backgroundPosition: "center",
           }}
         >
