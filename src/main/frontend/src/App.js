@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     // todo get the email in this class and pass to header as prop, and convert to typescript
-    // TODO use redux rather than contexts for the color mode
+    // TODO use redux rather than contexts for the color mode test
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
